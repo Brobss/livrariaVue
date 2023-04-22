@@ -36,18 +36,81 @@ export default {
   <h1>Categoria</h1>
   <hr />
   <div class="form">
-    <input type="text" v-model="categoria.descricao" placeholder="Descrição" />
-    <button @click="salvar">Salvar</button>
+    <input
+      class="inputAdd"
+      type="text"
+      v-model="categoria.descricao"
+      placeholder="Descrição"
+    />
+    <button class="salvarBtn" @click="salvar">Salvar</button>
   </div>
   <hr />
   <ul>
-    <li v-for="categoria in categorias" :key="categoria.id">
-      <span @click="editar(categoria)">
-        ({{ categoria.id }}) - {{ categoria.descricao }} -
+    <li
+      class="listaCategoria"
+      v-for="categoria in categorias"
+      :key="categoria.id"
+    >
+      <span class="itemCategoria" @click="editar(categoria)">
+        {{ categoria.id }} - {{ categoria.descricao }}
       </span>
-      <button @click="excluir(categoria)">X</button>
+      <span class="deleteBtn" @click="excluir(categoria)">X</span>
     </li>
   </ul>
 </template>
 
-<style></style>
+<style>
+.listaCategoria {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  transition: 0.5s;
+}
+
+.listaCategoria:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+
+.itemCategoria {
+  padding: auto;
+  margin: auto;
+  font-size: larger;
+  color: black;
+}
+
+.deleteBtn {
+  padding: 5px;
+  margin: 5px;
+  font-size: larger;
+  color: red;
+  transition: 0.2s;
+}
+
+.deleteBtn:hover {
+  color: darkred;
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.inputAdd {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+}
+
+.salvarBtn {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+  transition: 0.2s;
+}
+</style>
