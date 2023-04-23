@@ -56,7 +56,7 @@ export default {
       <span class="itemCategoria" @click="editar(autor)">
         <div class="divID">{{ autor.id }}</div>
         <div class="divNome">{{ autor.nome }}</div>
-        <div class="divEmail"><u>Email:</u> {{ autor.email }}</div>
+        <div class="divEmail"><u>Email:</u>{{ autor.email }}</div>
       </span>
       <span class="deleteBtn" @click="excluir(autor)">X</span>
     </li>
@@ -114,20 +114,21 @@ export default {
 }
 
 .divID {
-  display: inline-block;
+  display: block;
   width: 50px;
   font-weight: bolder;
   font-size: larger;
 }
 
 .divNome {
-  display: inline-block;
+  display: block;
   width: 200px;
   font-style: italic;
 }
 
 .divEmail {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   width: 200px;
 }
 </style>
