@@ -1,5 +1,5 @@
 <template>
-  <div class="divHeader">
+  <div id="divNav" class="divHeader">
     <router-link class="itemHeader" :to="{ name: 'home' }">Home</router-link>
     <router-link class="itemHeader" to="/categorias">Categorias</router-link>
     <router-link class="itemHeader" to="/editoras">Editoras</router-link>

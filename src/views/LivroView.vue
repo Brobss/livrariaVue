@@ -1,23 +1,40 @@
 <script>
 import LivrosApi from "@/api/livros";
 const livrosApi = new LivrosApi();
+import AutoresApi from "@/api/autores";
+const autoresApi = new AutoresApi();
+import EditorasApi from "@/api/editoras";
+const editorasApi = new EditorasApi();
+import CategoriasApi from "@/api/categorias";
+const categoriasApi = new CategoriasApi();
 export default {
   data() {
     return {
       livros: [],
       livro: {},
+      autores: [],
+      autor: {},
+      editoras: [],
+      editora: {},
+      categorias: [],
+      categoria: {},
       livroSelecionado: null,
     };
   },
   async created() {
     this.livros = await livrosApi.buscarTodosOsLivros();
+    this.autores = await autoresApi.buscarTodosOsAutores();
+    this.editoras = await editorasApi.buscarTodasAsEditoras();
+    this.categorias = await categoriasApi.buscarTodasAsCategorias();
   },
   watch: {
     livroSelecionado(novoValor) {
       if (novoValor != null) {
         document.getElementById("divBody").classList.add("blur");
+        document.getElementById("divNav").style.filter = "blur(2px)";
       } else {
         document.getElementById("divBody").classList.remove("blur");
+        document.getElementById("divNav").style.filter = "blur(0px)";
       }
     },
   },
@@ -72,20 +89,43 @@ export default {
         class="inputAdd"
         type="text"
         v-model="livro.isbn"
-        placeholder="Site"
+        placeholder="ISBN"
       />
       <input
         class="inputAdd"
         type="text"
         v-model="livro.quantidade"
-        placeholder="Site"
+        placeholder="Quantidade"
       />
       <input
         class="inputAdd"
         type="text"
         v-model="livro.preco"
-        placeholder="Site"
+        placeholder="Preço"
       />
+      <select v-model="livro.autor" name="" id="">
+        <option v-for="autor in autores" :key="autor.id" :value="autor.id">
+          {{ autor.nome }}
+        </option>
+      </select>
+      <select v-model="livro.editora" id="">
+        <option
+          v-for="editora in editoras"
+          :key="editora.id"
+          :value="editora.id"
+        >
+          {{ editora.nome }}
+        </option>
+      </select>
+      <select v-model="livro.categoria" id="">
+        <option
+          v-for="categoria in categorias"
+          :key="categoria.id"
+          :value="categoria.id"
+        >
+          {{ categoria.descricao }}
+        </option>
+      </select>
       <button class="salvarBtn" @click="salvar">Salvar</button>
     </div>
     <hr />
@@ -185,18 +225,19 @@ export default {
   border: 1px solid black;
   border-radius: 12px;
   font-size: larger;
-  background-color: grey;
+  background-color: #252525;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
 }
 
 .btnFechar {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 8px;
-  margin: -8px;
+  padding: 7px;
+  margin: -7px;
   font-size: larger;
   color: red;
   transition: 0.2s;
@@ -215,5 +256,6 @@ export default {
   transition: 1s;
   filter: blur(2px);
   pointer-events: none;
+  z-index: -1;
 }
 </style>
