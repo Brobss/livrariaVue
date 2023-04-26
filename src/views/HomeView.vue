@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <h1>BemVindo</h1>
+  <h1>Selecione um Endpoint</h1>
 </template>

@@ -12,11 +12,8 @@ export default {
     return {
       livros: [],
       livro: {},
-      autores: [],
       autor: {},
-      editoras: [],
       editora: {},
-      categorias: [],
       categoria: {},
       livroSelecionado: null,
     };
@@ -103,12 +100,12 @@ export default {
         v-model="livro.preco"
         placeholder="Preço"
       />
-      <select v-model="livro.autor" name="" id="">
+      <select class="selectDropdown" v-model="livro.autor" id="">
         <option v-for="autor in autores" :key="autor.id" :value="autor.id">
           {{ autor.nome }}
         </option>
       </select>
-      <select v-model="livro.editora" id="">
+      <select class="selectDropdown" v-model="livro.editora" id="">
         <option
           v-for="editora in editoras"
           :key="editora.id"
@@ -117,7 +114,7 @@ export default {
           {{ editora.nome }}
         </option>
       </select>
-      <select v-model="livro.categoria" id="">
+      <select class="selectDropdown" v-model="livro.categoria" id="">
         <option
           v-for="categoria in categorias"
           :key="categoria.id"
@@ -257,5 +254,14 @@ export default {
   filter: blur(2px);
   pointer-events: none;
   z-index: -1;
+}
+
+.selectDropdown {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+  width: 200px;
 }
 </style>
