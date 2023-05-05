@@ -15,7 +15,7 @@ export default {
       autor: {},
       editora: {},
       categoria: {},
-      livroSelecionado: null,
+      itemSelecionado: null,
     };
   },
   async created() {
@@ -25,19 +25,19 @@ export default {
     this.categorias = await categoriasApi.buscarTodasAsCategorias();
   },
   watch: {
-    livroSelecionado(novoValor) {
+    itemSelecionado(novoValor) {
       if (novoValor != null) {
         document.getElementById("divBody").classList.add("blur");
-        document.getElementById("divNav").style.filter = "blur(2px)";
+        document.getElementById("divNav").classList.add("blur");
       } else {
         document.getElementById("divBody").classList.remove("blur");
-        document.getElementById("divNav").style.filter = "blur(0px)";
+        document.getElementById("divNav").classList.remove("blur");
       }
     },
   },
   methods: {
-    async selecionarLivro(livro) {
-      this.livroSelecionado = livro;
+    async selecionarItem(livro) {
+      this.itemSelecionado = livro;
     },
 
     async salvar() {
@@ -61,16 +61,16 @@ export default {
 </script>
 
 <template>
-  <div class="painelDetalhes" v-if="livroSelecionado">
-    <span class="btnFechar" @click="livroSelecionado = null">X</span>
-    <div>ID: {{ livroSelecionado.id }}</div>
-    <div>Título: {{ livroSelecionado.titulo }}</div>
-    <div>ISBN: {{ livroSelecionado.isbn }}</div>
-    <div>Quantidade: {{ livroSelecionado.quantidade }}</div>
-    <div>Preço: {{ livroSelecionado.preco }}</div>
-    <div>Categoria: {{ livroSelecionado.categoria.descricao }}</div>
-    <div>Autor: {{ livroSelecionado.autor.nome }}</div>
-    <div>Editora: {{ livroSelecionado.editora.nome }}</div>
+  <div class="painelDetalhes" v-if="itemSelecionado">
+    <span class="btnFechar" @click="itemSelecionado = null">X</span>
+    <div>ID: {{ itemSelecionado.id }}</div>
+    <div>Título: {{ itemSelecionado.titulo }}</div>
+    <div>ISBN: {{ itemSelecionado.isbn }}</div>
+    <div>Quantidade: {{ itemSelecionado.quantidade }}</div>
+    <div>Preço: {{ itemSelecionado.preco }}</div>
+    <div>Categoria: {{ itemSelecionado.categoria.descricao }}</div>
+    <div>Autor: {{ itemSelecionado.autor.nome }}</div>
+    <div>Editora: {{ itemSelecionado.editora.nome }}</div>
   </div>
   <div id="divBody">
     <h1>Livro</h1>
@@ -128,7 +128,7 @@ export default {
     <hr />
     <ul>
       <li class="listaCategoria" v-for="livro in livros" :key="livro.id">
-        <span class="itemCategoria" @click="selecionarLivro(livro)">
+        <span class="itemCategoria" @click="selecionarItem(livro)">
           <!--<div class="divID">{{ livro.id }}</div> -->
           <div class="divNome">{{ livro.titulo }}</div>
           <!--<div class="divSite"><u>Site:</u> {{ livro.site }}</div>-->
@@ -140,128 +140,4 @@ export default {
   </div>
 </template>
 
-<style>
-.listaCategoria {
-  justify-content: space-between;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 12px;
-  transition: 0.5s;
-}
-
-.listaCategoria:hover {
-  background-color: darkgray;
-  cursor: pointer;
-}
-
-.itemCategoria {
-  font-size: larger;
-  color: black;
-}
-
-.deleteBtn {
-  padding: 5px;
-  margin: 5px;
-  font-size: larger;
-  color: red;
-  transition: 0.2s;
-}
-
-.deleteBtn:hover {
-  color: darkred;
-  cursor: pointer;
-  transform: scale(1.4);
-}
-
-.inputAdd {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 12px;
-  font-size: larger;
-}
-
-.salvarBtn {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 12px;
-  font-size: larger;
-  transition: 0.2s;
-}
-
-.salvarBtn:hover {
-  background-color: darkgray;
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-.divID {
-  display: block;
-  width: 50px;
-  font-weight: bolder;
-  font-size: larger;
-}
-
-.divNome {
-  display: block;
-  width: 300px;
-  font-style: italic;
-}
-
-.divSite {
-  display: flex;
-  flex-direction: row;
-  width: 200px;
-}
-
-.painelDetalhes {
-  position: fixed;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 12px;
-  font-size: larger;
-  background-color: #252525;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-.btnFechar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 7px;
-  margin: -7px;
-  font-size: larger;
-  color: red;
-  transition: 0.2s;
-  width: 30px;
-  height: 30px;
-  display: block;
-}
-
-.btnFechar:hover {
-  color: darkred;
-  cursor: pointer;
-  transform: scale(1.4);
-}
-
-.blur {
-  transition: 1s;
-  filter: blur(2px);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.selectDropdown {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 12px;
-  font-size: larger;
-  width: 200px;
-}
-</style>
+<style></style>

@@ -13,3 +13,127 @@ a,
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
 }
+
+.listaCategoria {
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  transition: 0.5s;
+}
+
+.listaCategoria:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+
+.itemCategoria {
+  font-size: larger;
+  color: black;
+}
+
+.deleteBtn {
+  padding: 5px;
+  margin: 5px;
+  font-size: larger;
+  color: red;
+  transition: 0.2s;
+}
+
+.deleteBtn:hover {
+  color: darkred;
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.inputAdd {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+}
+
+.salvarBtn {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+  transition: 0.2s;
+}
+
+.salvarBtn:hover {
+  background-color: darkgray;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.divID {
+  display: block;
+  width: 50px;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.divNome {
+  display: block;
+  width: 300px;
+  font-style: italic;
+}
+
+.divSite {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+}
+
+.painelDetalhes {
+  position: fixed;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+  background-color: #252525;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.btnFechar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px;
+  margin: -7px;
+  font-size: larger;
+  color: red;
+  transition: 0.2s;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.btnFechar:hover {
+  color: darkred;
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.blur {
+  transition: 1s;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.selectDropdown {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: larger;
+  width: 200px;
+}
