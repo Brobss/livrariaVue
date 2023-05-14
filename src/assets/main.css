@@ -15,7 +15,10 @@ a,
 }
 
 .listaCategoria {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
   margin: 10px;
   border: 1px solid black;
   border-radius: 12px;
@@ -28,6 +31,8 @@ a,
 }
 
 .itemCategoria {
+  padding: auto;
+  margin: auto;
   font-size: larger;
   color: black;
 }

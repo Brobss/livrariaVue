@@ -6,14 +6,14 @@ export default {
     return {
       editoras: [],
       editora: {},
-      editoraSelecionada: null,
+      itemSelecionado: null,
     };
   },
   async created() {
     this.editoras = await editorasApi.buscarTodasAsEditoras();
   },
   watch: {
-    editoraSelecionada(novoValor) {
+    itemSelecionado(novoValor) {
       if (novoValor != null) {
         document.getElementById("divBody").classList.add("blur");
         document.getElementById("divNav").classList.add("blur");
@@ -24,8 +24,8 @@ export default {
     },
   },
   methods: {
-    async selecionarEditora(editora) {
-      this.editoraSelecionada = editora;
+    async selecionarItem(editora) {
+      this.itemSelecionado = editora;
     },
 
     async salvar() {
@@ -49,11 +49,11 @@ export default {
 </script>
 
 <template>
-  <div class="painelDetalhes" v-if="editoraSelecionada">
-    <span class="btnFechar" @click="editoraSelecionada = null">X</span>
-    <div>ID: {{ editoraSelecionada.id }}</div>
-    <div>Nome: {{ editoraSelecionada.nome }}</div>
-    <div>Site: {{ editoraSelecionada.site }}</div>
+  <div class="painelDetalhes" v-if="itemSelecionado">
+    <span class="btnFechar" @click="itemSelecionado = null">X</span>
+    <div>ID: {{ itemSelecionado.id }}</div>
+    <div>Nome: {{ itemSelecionado.nome }}</div>
+    <div>Site: {{ itemSelecionado.site }}</div>
   </div>
   <div id="divBody">
     <h1>Editora</h1>
@@ -76,7 +76,7 @@ export default {
     <hr />
     <ul>
       <li class="listaCategoria" v-for="editora in editoras" :key="editora.id">
-        <span class="itemCategoria" @click="selecionarEditora(editora)">
+        <span class="itemCategoria" @click="selecionarItem(editora)">
           <!--<div class="divID">{{ editora.id }}</div> -->
           <div class="divNome">{{ editora.nome }}</div>
           <!--<div class="divSite"><u>Site:</u> {{ editora.site }}</div>-->

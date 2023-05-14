@@ -6,6 +6,7 @@ export default {
     return {
       autores: [],
       autor: {},
+      itemSelecionado: null,
     };
   },
   async created() {
@@ -50,13 +51,13 @@ export default {
 </script>
 
 <template>
-  <template>
-    <div class="painelDetalhes" v-if="itemSelecionado">
-      <span class="btnFechar" @click="itemSelecionado = null">X</span>
-      <div>ID: {{ itemSelecionado.id }}</div>
-      <div>Nome: {{ itemSelecionado.nome }}</div>
-      <div>Email: {{ itemSelecionado.email }}</div>
-    </div>
+  <div class="painelDetalhes" v-if="itemSelecionado">
+    <span class="btnFechar" @click="itemSelecionado = null">X</span>
+    <div>ID: {{ itemSelecionado.id }}</div>
+    <div>Nome: {{ itemSelecionado.nome }}</div>
+    <div>Email: {{ itemSelecionado.email }}</div>
+  </div>
+  <div id="divBody">
     <h1>Autor</h1>
     <hr />
     <div class="form">
@@ -79,16 +80,14 @@ export default {
       <ul>
         <li class="listaCategoria" v-for="autor in autores" :key="autor.id">
           <span class="itemCategoria" @click="selecionarItem(autor)">
-            <!--<div class="divID">{{ livro.id }}</div> -->
             <div class="divNome">{{ autor.nome }}</div>
-            <!--<div class="divSite"><u>Site:</u> {{ livro.site }}</div>-->
           </span>
           <span class="editarBtn" @click="editar(autor)">Editar</span>
           <span class="deleteBtn" @click="excluir(autor)">X</span>
         </li>
       </ul>
     </div>
-  </template>
+  </div>
 </template>
 
 <style></style>
