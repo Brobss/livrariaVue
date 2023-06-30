@@ -132,6 +132,7 @@ a,
   filter: blur(2px);
   pointer-events: none;
   z-index: -1;
+  
 }
 
 .selectDropdown {

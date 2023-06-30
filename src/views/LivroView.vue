@@ -67,7 +67,7 @@ export default {
     <div>Título: {{ itemSelecionado.titulo }}</div>
     <div>ISBN: {{ itemSelecionado.isbn }}</div>
     <div>Quantidade: {{ itemSelecionado.quantidade }}</div>
-    <div>Preço: {{ itemSelecionado.preco }}</div>
+    <div>Preço: R${{ itemSelecionado.preco }}</div>
     <div>Categoria: {{ itemSelecionado.categoria.descricao }}</div>
     <div>Autor: {{ itemSelecionado.autor.nome }}</div>
     <div>Editora: {{ itemSelecionado.editora.nome }}</div>
